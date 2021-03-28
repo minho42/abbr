@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<div class="row justify-content-center mt-3">
+  <div class="col-md-8">
+    <a href="{% url 'abbr:list' %}" class="text-center">
+      <h2>List</h2>
+    </a>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>
+            <h2>{{ abbr.name }} <a href="https://en.wikipedia.org/wiki/{{ abbr.description }}" target="_blank"
+                rel="noopener noreferrer"></a></h2>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{ abbr.description}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {% if abbr.wiki %}
+            {{ abbr.wiki|safe }}
+            {% else %}
+            {% endif %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock content %}

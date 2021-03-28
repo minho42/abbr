@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    {% block stylesheet %}{% endblock stylesheet%}
+
+    <!-- requirements for bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+        integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+
+    <!-- My own CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    {% include './navbar.html' %}
+    <div class="container">
+        <!-- 
+    django  levels:
+    DEBUG, INFO, SUCCESS, WARNING, ERROR
+    -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <!-- onclick="hideThisMessage(this.id)" -->
+            <div id="message{{ forloop.counter }}" class="alert alert-{{ message.tags }} alert-dismissible"
+                role="alert">
+                <button type="button" class="close" onclick="hideThisMessage(this.id)" data-dismiss="alert"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}
+        <!-- <h4><span class="label label-primary">block from base.html</span></h4> -->
+        {% endblock content %}
+    </div>
+    <!-- /container -->
+
+
+    <button class="btn btn-primary btn-backtotop" style="display: none;">back to top</button>
+    <!-- this button must come before 'scriptjs' -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    {% block javascript %}{% endblock javascript %}
+    <!-- javascript block must come after all the other scripts-->
+
+
+    <script>
+        // bootstrap tooltip
+        $(document).ready(function () {
+            // https://www.w3schools.com/bootstrap/bootstrap_tooltip.asp
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        // bootstrap popover
+        $(document).ready(function () {
+            // $('[data-toggle="popover"]').popover('show');
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% load core_extras %}
+{% rqworker_count as rqworker_count %}
+
+{% block title %}Abbr{% endblock title %}
+
+{% block content %}
+<div class="row justify-content-center mt-3">
+
+  <div class="col-md-3">
+    <ul class="list-unstyled">
+      <!---------- DOWNLOAD ---------->
+      <li>
+        <a href="{% url 'abbr:generatejson' %}" class="btn btn-primary">
+          Generate json for frontend
+        </a>
+      </li>
+      <hr>
+
+      <li>
+        <a href="{% url 'abbr:downloadjson' %}"
+          class="btn {% if count_diff <= 0 %} btn-primary {%elif total_count == backup_count %} {% else %} btn-danger{% endif %}">
+          Download json
+        </a>
+      </li>
+      <li>
+        last change date:
+        {{ last_change_date|naturaltime }} <br>
+
+        last backup time:
+        {{ last_backup_time|naturaltime }} <br>
+
+      </li>
+
+      <br>
+
+      <li>
+        total count: {{ total_count }} <br>
+        backup count: {{ backup_count }} <br>
+
+        count diff:
+        <span class="badge {%if total_count == backup_count %} badge-primary{% else %} badge-danger{% endif %}">
+          {{ count_diff }}
+        </span>
+      </li>
+      <hr>
+      <!---------- UPLOAD ---------->
+      <li>
+        <a id="uploadjson-btn" href="{% url 'abbr:uploadjson' %}"
+          class="btn {% if not backup_exists %}btn-danger disabled {% else %}btn-primary{% endif %}">
+          {% if backup_exists %}
+          Upload json
+          {% else %}
+          No backup file: <br>
+          '{{ backup_name }}'
+          {% endif %}
+        </a>
+      </li>
+      <li>
+        backup_exists: {{ backup_exists|yesno }}, <br> <!-- {{ backup_exists|yesno:"O,X" }} -->
+        backup_name: {{ backup_name }}
+      </li>
+      <hr>
+      <!---------- SAVE WIKI SUMMARY ---------->
+      <li>
+        <a href="{% url 'abbr:save_wiki_summary_for_all' %}" class="btn btn-primary">save all wikis</a>
+        <p><code>how to use 'rqworker_count' with condition</code></p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-8">
+    <!--
+      abbr.views returns list when searched, or queryset for all 
+      {{ abbr_list.count }} doesn't work on the list
+      therefore using {{ abbr_list|length }} instead
+    -->
+
+    <h2>Count: {{ abbr_list|length }}
+      {% if query %} / <code>{{ query }}</code>{% endif %}
+    </h2>
+
+    <div class="search mb-3">
+
+      <form class="form" action="{% url 'abbr:list' %}" method="get">
+        <div class="form-group">
+          <input class="form-control" type="text" name="q" placeholder="Search" autofocus>
+        </div>
+      </form>
+    </div>
+
+    {% if possible_matches %}
+    <div class="possible_matches">
+      <div>Did you mean... </div>
+      {% for possible_match in possible_matches %}
+      <a href="{% url 'abbr:detail' possible_match.id %}">{{ possible_match.name }}
+        ({{ possible_match.description }})</a> /
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div>
+      {% if abbr_list %}
+      <table class="table table-sm table-hover">
+        <thead>
+          <tr>
+            <th>abbr</th>
+            <th>description</th>
+            <th>wiki</th>
+          </tr>
+        <tbody>
+          {% for a in abbr_list %}
+          <!-- <tr class="{% if a.wiki %}to-expand{% endif %}" data-toggle="collapse" data-target="#collapse{{ a.id }}" aria-expanded="false" aria-controls="collapse{{ a.id }}"> -->
+          <tr>
+            <td>{{ a.name }}</td>
+            <td><a href="{% url 'abbr:detail' a.pk %}">{{ a.description }}</a></td>
+            <td>{% if a.wiki %}O{% endif %}</td>
+          </tr>
+          <!-- 
+          {% if a.wiki %}
+          <tr class="collapse" id="collapse{{ a.id }}">
+            <td colspan="100%" class="p-3">
+              {{ a.wiki|truncatewords:"40" }}
+            </td>
+          </tr>
+          {% endif %}
+           -->
+          {% endfor %}
+        </tbody>
+        </thead>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
