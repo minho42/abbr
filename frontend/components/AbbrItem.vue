@@ -1,7 +1,12 @@
 <template>
-  <div>
-    {{ name }}: {{ description }}
-  </div>  
+  <tr class="border-b border-gray-200">
+    <td class="text-center py-2">
+      {{ name }}
+    </td>
+    <td class="pl-2">
+      {{ description }}
+    </td>
+  </tr>  
 </template>
 
 <script>

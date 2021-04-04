@@ -1,17 +1,21 @@
 <template>
-  <div class="flex flex-col justify-center pt-2 px-2">
-    <div class="mx-3">
+  <div class="flex flex-col justify-center pt-2 px-2 mx-4">
+    <div class="flex px-6 py-1 flex-wrap justify-center mb-2">
+      {{ filteredAbbrData.length }} / {{ abbrData.length }}
+    </div>
+    
+    <div class="">
       <form v-on:submit.prevent>
-        <label for="search" class="text-center text-xl mb-1 mr-2">
+        <!-- <label for="search" class="text-center text-xl mb-1 mr-2">
           Search
-        </label>
+        </label> -->
         <div class="flex items-center justify-between relative">
           <input
             id="searchInput"
             v-model="query"
             type="text"
             placeholder="Search abbreviations"
-            class="pl-6 pr-24 py-2 rounded-lg w-full border border-gray-300  focus:border-gray-800 bg-gray-100 focus:outline-none"
+            class="pl-6 pr-24 py-2 rounded-lg w-full border border-gray-300 focus:border-gray-800 bg-gray-100 focus:outline-none"
             autofocus
           />
 
@@ -44,18 +48,25 @@
         </div>
       </form>
     </div>
-
-    <div
-      class="flex mx-3 px-6 py-3 flex-wrap justify-center border-b border-gray-300 mb-2"
-    >
-      {{ filteredAbbrData.length }} / {{ abbrData.length }}
-    </div>
-
-    <AbbrItem
-      v-for="abbr in filteredAbbrData"
-      v-bind="abbr"
-      :key="abbr.id"
-    />
+    
+    <table class="table-auto mt-2">
+      <thead>
+        <tr class="border-b-2 border-gray-300">
+          <!-- <th class="font-bold">No</th> -->
+          <th class="font-bold">Name</th>
+          <th class="font-bold text-left pl-2">Description</th>
+          <!-- <th class="font-bold">Wiki</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <AbbrItem
+          v-for="abbr in filteredAbbrData"
+          v-bind="abbr"
+          :key="abbr.id"
+        />
+      </tbody>
+    </table>
+    
   </div>
 </template>
 
@@ -83,7 +94,7 @@ export default {
   },
   computed: {
     filteredAbbrData() {
-      const query = this.query.trim()
+      const query = this.query.toLowerCase().trim()
       if (query.length < 1) {
         return []
       }
