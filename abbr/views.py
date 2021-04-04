@@ -119,20 +119,20 @@ def save_wiki_summary(name, description):
     try:
         wiki = wiki_summary(abbr.description)
         if len(wiki) <= 0:
-            print(f"wiki summary NOT retrieved: {abbr.name} ({abbr.description})", "RED")
+            print(f"wiki summary NOT retrieved: {abbr.name} ({abbr.description})")
             return
         abbr.wiki = wiki
         abbr.save()
-        print(f"wiki summary saved: {abbr.name} ({abbr.description})", "GREEN")
+        print(f"wiki summary saved: {abbr.name} ({abbr.description})")
     except:
         """
         make this exception specific
         """
-        print(f"wiki summary NOT saved: {abbr.name} ({abbr.description})", "RED")
+        print(f"wiki summary NOT saved: {abbr.name} ({abbr.description})")
 
 
 def save_wiki_summary_for_all(request):
-    print("save_wiki_summary_for_all", "YELLOW")
+    print("save_wiki_summary_for_all")
     if get_rqworker_count() <= 0:
         messages.error(request, f"rqworker not on!")
         return HttpResponseRedirect(reverse("abbr:list"))

@@ -1,0 +1,11 @@
+{
+  "AbbrItem": {
+    "description": "Auto imported from components/AbbrItem.vue"
+  },
+  "AbbrList": {
+    "description": "Auto imported from components/AbbrList.vue"
+  },
+  "Navbar": {
+    "description": "Auto imported from components/Navbar.vue"
+  }
+}
