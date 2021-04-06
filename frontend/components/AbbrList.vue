@@ -9,6 +9,7 @@
         <!-- <label for="search" class="text-center text-xl mb-1 mr-2">
           Search
         </label> -->
+
         <div class="flex items-center justify-between relative">
           <input
             id="searchInput"
@@ -53,7 +54,7 @@
       <thead>
         <tr class="border-b-2 border-gray-300">
           <!-- <th class="font-bold">No</th> -->
-          <th class="font-bold">Name</th>
+          <th class="font-bold">Abbr</th>
           <th class="font-bold text-left pl-2">Description</th>
           <!-- <th class="font-bold">Wiki</th> -->
         </tr>
