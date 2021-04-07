@@ -209,9 +209,8 @@ def upload_json(request):
     for row in json_data:
         name = row["fields"]["name"]
         description = row["fields"]["description"]
-        description_ae = row["fields"]["description_ae"]
 
-        Abbr.objects.get_or_create(name=name, description=description, description_ae=description_ae)
+        Abbr.objects.get_or_create(name=name, description=description)
 
     messages.success(request, "upload_json: " + str(len(json_data)) + " abbrs saved")
     return HttpResponseRedirect(reverse("abbr:list"))

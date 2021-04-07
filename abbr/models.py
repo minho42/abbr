@@ -12,7 +12,6 @@ class Abbr(TimeStampedModel):
     # name & description, should be unique case insensitive
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=400, help_text="british english")
-    description_ae = models.CharField(max_length=400, null=False, blank=True, help_text="american english")
     wiki = models.CharField(max_length=9999, null=True, blank=True, help_text="wikipedia summary")
 
     def __str__(self):
