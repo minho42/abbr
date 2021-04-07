@@ -2,10 +2,6 @@
   <div class="flex flex-col justify-center mx-2 sm:mx-6">    
     <div class="my-3">
       <form v-on:submit.prevent>
-        <!-- <label for="search" class="text-center text-xl mb-1 mr-2">
-          Search
-        </label> -->
-
         <div class="flex items-center justify-between relative">
           <input
             id="searchInput"
@@ -62,6 +58,10 @@
         />
       </tbody>
     </table>
+    
+    <div v-if="query.trim().length > 0 && filteredAbbrData.length === 0" class="mx-auto">
+      Not found
+    </div>
     
   </div>
 </template>
