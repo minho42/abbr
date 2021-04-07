@@ -1,10 +1,6 @@
 <template>
-  <div class="flex flex-col justify-center pt-2 px-2 mx-4">
-    <div class="flex px-6 py-1 flex-wrap justify-center mb-2">
-      {{ filteredAbbrData.length }} / {{ abbrData.length }}
-    </div>
-    
-    <div class="">
+  <div class="flex flex-col justify-center mx-2 sm:mx-6">    
+    <div class="my-3">
       <form v-on:submit.prevent>
         <!-- <label for="search" class="text-center text-xl mb-1 mr-2">
           Search
@@ -50,10 +46,9 @@
       </form>
     </div>
     
-    <table class="table-auto mt-2">
+    <table v-if="filteredAbbrData.length > 0" class="table-auto mb-6">
       <thead>
         <tr class="border-b-2 border-gray-300">
-          <!-- <th class="font-bold">No</th> -->
           <th class="font-bold">Abbr</th>
           <th class="font-bold text-left pl-2">Description</th>
           <!-- <th class="font-bold">Wiki</th> -->
