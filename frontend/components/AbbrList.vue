@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center mx-2 sm:mx-6">    
     <div class="my-3">
-      <form v-on:submit.prevent>
+      <form v-on:submit.prevent @keydown.enter.prevent>
         <div class="flex items-center justify-between relative">
           <input
             id="searchInput"
