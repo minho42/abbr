@@ -91,12 +91,29 @@ export default {
   computed: {
     filteredAbbrData() {
       const query = this.query.toLowerCase().trim()
+      
       if (query.length < 1) {
         return []
       }
-      return this.abbrData.filter((item) => {
-        return (item.name.toLowerCase().includes(query) ||item.description.toLowerCase().includes(query))
-      })
+      
+      let result = []
+      result.push(...
+        this.abbrData.filter((item) => {
+          return (item.name.toLowerCase() === query)
+        })
+      )
+      result.push(...
+        this.abbrData.filter((item) => {
+          return (item.name.toLowerCase().includes(query))
+        })
+      )
+      result.push(...
+        this.abbrData.filter((item) => {
+          return (item.description.toLowerCase().includes(query))
+        })
+      )
+      return [... new Set(result)]
+  
     }
   },
 }
