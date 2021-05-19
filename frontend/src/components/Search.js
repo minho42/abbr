@@ -1,13 +1,9 @@
-import { useState } from "react";
-
-const Search = () => {
-  const [query, setQuery] = useState("");
-
+const Search = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   const handleChange = (e) => {
-    console.log(e.target.value);
+    props.onSearchChange(e.target.value.toLowerCase().trim());
   };
 
   return (
