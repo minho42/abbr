@@ -1,31 +1,38 @@
 import AbbrItem from "./AbbrItem";
 
-const AbbrList = (props) => {
-  const { query } = props;
+const AbbrList = ({ query, data }) => {
+  const searchResult = () => {
+    let result = [];
 
-  let result = [];
-  if (query.length >= 1) {
+    if (query.length < 1) {
+      return [];
+    }
+
     result.push(
-      ...props.data.filter((item) => {
+      ...data.filter((item) => {
         return item.name.toLowerCase() === query;
       })
     );
     result.push(
-      ...props.data.filter((item) => {
+      ...data.filter((item) => {
         return item.name.toLowerCase().startsWith(query);
       })
     );
     result.push(
-      ...props.data.filter((item) => {
+      ...data.filter((item) => {
         return item.name.toLowerCase().includes(query);
       })
     );
-    result.push(
-      ...props.data.filter((item) => {
-        return item.description.toLowerCase().includes(query);
-      })
-    );
-  }
+
+    if (query.length > 2) {
+      result.push(
+        ...data.filter((item) => {
+          return item.description.toLowerCase().includes(query);
+        })
+      );
+    }
+    return [...new Set(result)];
+  };
 
   return (
     <div className="flex flex-col justify-center mx-2 sm:mx-6">
@@ -37,8 +44,7 @@ const AbbrList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {/* {props.data.map((row) => { */}
-          {[...new Set(result)].map((row) => {
+          {searchResult().map((row) => {
             return <AbbrItem key={row.id} data={row} />;
           })}
         </tbody>
