@@ -151,7 +151,7 @@ def save_wiki_summary_for_all(request):
 
 def generate_json(request):
     data = []
-    DATA_PATH = "./frontend/data.json"
+    DATA_PATH = "./frontend/src/data.json"
 
     abbrs = Abbr.objects.all()
     for a in abbrs:
