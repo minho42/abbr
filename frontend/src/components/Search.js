@@ -21,10 +21,9 @@ const Search = (props) => {
           placeholder="Search abbreviations"
           className="pl-6 pr-16 py-2 rounded-lg w-full border border-gray-300 focus:border-gray-800 bg-gray-100 focus:outline-none"
           autoFocus
-          // value={value}
           onChange={handleChange}
         />
-        {searchInput.value.trim().length > 0 ? (
+        {searchInput && searchInput.value.trim().length > 0 ? (
           <div className="absolute inset-y-0 right-10 flex items-center">
             <button
               onClick={clearInput}
