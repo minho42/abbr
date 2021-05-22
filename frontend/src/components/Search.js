@@ -8,6 +8,7 @@ const Search = (props) => {
   };
 
   const clearInput = () => {
+    console.log("clear");
     searchInput.value = "";
     searchInput.focus();
     props.onSearchChange("");
@@ -26,6 +27,7 @@ const Search = (props) => {
         {searchInput && searchInput.value.trim().length > 0 ? (
           <div className="absolute inset-y-0 right-10 flex items-center">
             <button
+              type="button"
               onClick={clearInput}
               className="h-full px-3 text-gray-500 hover:text-gray-800 focus:outline-none"
             >
