@@ -7,7 +7,7 @@ const Search = (props) => {
   };
 
   return (
-    <div className="flex flex-col justify-center px-2 py-2">
+    <div className="flex flex-col justify-center px-4 py-2">
       <form onSubmit={handleSubmit}>
         <input
           type="text"
