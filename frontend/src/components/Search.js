@@ -20,7 +20,7 @@ const Search = (props) => {
         <input
           type="text"
           placeholder="Search abbreviations"
-          className="pl-6 pr-16 py-2 rounded-lg w-full border border-gray-300 focus:border-gray-800 bg-gray-100 focus:outline-none"
+          className="pl-6 pr-16 py-2 rounded-lg w-full border border-gray-300  bg-gray-100 "
           autoFocus
           onChange={handleChange}
         />
