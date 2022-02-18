@@ -39,8 +39,8 @@ const AbbrList = ({ query, data }) => {
       <table className="table-auto mb-6">
         <thead>
           <tr className="border-b-2 border-gray-300">
-            <th className="font-bold">Abbr</th>
-            <th className="font-bold text-left pl-2">Description</th>
+            <th className="font-bold w-1/4">Abbr</th>
+            <th className="font-bold w-3/4 text-left pl-2">Description</th>
           </tr>
         </thead>
         <tbody>

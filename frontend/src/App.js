@@ -10,10 +10,12 @@ function App() {
     setQuery(q);
   };
   return (
-    <div className="">
-      <Navbar />
-      <Search onSearchChange={onSearchChange} />
-      <AbbrList data={data} query={query} />
+    <div className="flex flex-col items-center justify w-full">
+      <div className="w-full max-w-2xl">
+        <Navbar />
+        <Search onSearchChange={onSearchChange} />
+        <AbbrList data={data} query={query} />
+      </div>
     </div>
   );
 }
