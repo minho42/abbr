@@ -1,4 +1,0 @@
-Django
-django-environ
-psycopg2-binary
-whitenoise
