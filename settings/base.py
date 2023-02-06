@@ -28,10 +28,6 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
-    # Third party apps
-    "django_rq",
-    # Local apps
-    "core",  # core is added here so templatetags can be used
     "abbr",
 ]
 
@@ -132,18 +128,5 @@ EMAIL_HOST_USER = ""
 EMAIL_HOST_PASSWORD = ""
 EMAIL_PORT = "587"
 EMAIL_USE_TLS = True
-
-# https://github.com/rq/django-rq
-RQ_QUEUES = {
-    "default": {
-        "HOST": "localhost",
-        "PORT": 6379,
-        "DB": 0,
-        # 'PASSWORD': None,
-        "DEFAULT_TIMEOUT": 360,
-    },
-    "high": {"HOST": "localhost", "PORT": 6379, "DB": 0},
-    "low": {"HOST": "localhost", "PORT": 6379, "DB": 0},
-}
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

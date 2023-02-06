@@ -4,7 +4,6 @@ from datetime import datetime
 from difflib import get_close_matches
 from itertools import chain
 
-import django_rq
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -16,7 +15,6 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import DetailView, ListView
 
-from core.utils import get_rqworker_count, wiki_summary
 
 from .models import Abbr
 
@@ -112,41 +110,6 @@ class AbbrListView(ListView):
                 context["possible_matches"] = Abbr.objects.filter(description__in=possible_matches)
 
         return context
-
-
-def save_wiki_summary(name, description):
-    abbr = get_object_or_404(Abbr, name=name, description=description)
-    try:
-        wiki = wiki_summary(abbr.description)
-        if len(wiki) <= 0:
-            print(f"wiki summary NOT retrieved: {abbr.name} ({abbr.description})")
-            return
-        abbr.wiki = wiki
-        abbr.save()
-        print(f"wiki summary saved: {abbr.name} ({abbr.description})")
-    except:
-        """
-        make this exception specific
-        """
-        print(f"wiki summary NOT saved: {abbr.name} ({abbr.description})")
-
-
-def save_wiki_summary_for_all(request):
-    print("save_wiki_summary_for_all")
-    if get_rqworker_count() <= 0:
-        messages.error(request, f"rqworker not on!")
-        return HttpResponseRedirect(reverse("abbr:list"))
-    queue = django_rq.get_queue("default")
-
-    count = 1
-    abbrs = Abbr.objects.all()
-    for abbr in abbrs:
-        # print(f'{count} - {abbr.name}: {abbr.description}')
-        queue.enqueue(save_wiki_summary, abbr.name, abbr.description)
-        count += 1
-
-    messages.success(request, f"{count} wiki summaries enqueued for saving")
-    return HttpResponseRedirect(reverse("abbr:list"))
 
 
 def generate_json(request):

@@ -2,9 +2,6 @@
 {% load static %}
 {% load humanize %}
 
-{% load core_extras %}
-{% rqworker_count as rqworker_count %}
-
 {% block title %}Abbr{% endblock title %}
 
 {% block content %}
@@ -64,11 +61,6 @@
         backup_name: {{ backup_name }}
       </li>
       <hr>
-      <!---------- SAVE WIKI SUMMARY ---------->
-      <li>
-        <a href="{% url 'abbr:save_wiki_summary_for_all' %}" class="btn btn-primary">save all wikis</a>
-        <p><code>how to use 'rqworker_count' with condition</code></p>
-      </li>
     </ul>
   </div>
 
