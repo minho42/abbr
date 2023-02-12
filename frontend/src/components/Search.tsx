@@ -1,3 +1,5 @@
+import { XMarkIcon } from "@heroicons/react/24/outline";
+
 const Search = (props) => {
   const searchInput = document.querySelector<HTMLInputElement>("input");
   const handleSubmit = (e) => {
@@ -30,7 +32,7 @@ const Search = (props) => {
               onClick={clearInput}
               className="h-full px-3 text-gray-500 hover:text-gray-800 focus:outline-none"
             >
-              <div className="flex items-center justify-center px-3 text-xl">x</div>
+              <XMarkIcon className="w-6 h-6" />
             </button>
           </div>
         ) : (
