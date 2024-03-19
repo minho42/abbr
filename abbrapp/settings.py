@@ -28,8 +28,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     "abbr",
+    "debug_toolbar",
+    "django_extensions",
 ]
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -39,6 +40,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "abbrapp.urls"
