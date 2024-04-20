@@ -1,9 +1,9 @@
 black
-Django
+Django==4.1
 django-debug-toolbar
 django-environ
 django-extensions
-psycopg2-binary
+psycopg2
 pytest
 pytest-django
 whitenoise
