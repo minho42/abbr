@@ -50,3 +50,7 @@ class AbbrViewsTests(TestCase):
         import os
 
         self.assertTrue(os.path.exists(views.BACKUP_FILE_FULLPATH))
+
+    def test_save_wiki_summary(self):
+        pass
+

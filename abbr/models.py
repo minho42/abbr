@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 
+from core.utils import wiki_summary
 from abbrapp.models import TimeStampedModel
 
 
@@ -34,3 +35,20 @@ class Abbr(TimeStampedModel):
         last_mofify = self.last_change_date()
         days = (now - last_mofify).days
         return days
+
+
+# @receiver(post_save, sender=Abbr)
+def abbr_post_save(sender, instance, created, **kwargs):
+    if not created:
+        return
+    # print('===============================================\n')
+    # print(f'post_save: {instance.name}')
+    # print('\n===============================================')
+
+    if instance.wiki is not None:
+        return
+
+    # TODO change saving with rq_worker as it takes long to upload from file for the first time
+    wiki = wiki_summary(instance.description)
+    instance.wiki = wiki
+    instance.save()

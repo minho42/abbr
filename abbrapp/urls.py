@@ -5,6 +5,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls, name="admin"),
+    path("django-rq/", include("django_rq.urls")),
     path("", include("abbr.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

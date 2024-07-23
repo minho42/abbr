@@ -10,4 +10,9 @@ urlpatterns = [
     path("uploadjson/", views.upload_json, name="uploadjson"),
     path("generate-json/", views.generate_json, name="generatejson"),
     path("downloadjson/", views.download_json, name="downloadjson"),
+    path(
+        "save_wiki_summary_for_all/",
+        views.save_wiki_summary_for_all,
+        name="save_wiki_summary_for_all",
+    ),
 ]
