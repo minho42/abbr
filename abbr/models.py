@@ -12,7 +12,9 @@ class Abbr(TimeStampedModel):
     # name & description, should be unique case insensitive
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=400, help_text="british english")
-    wiki = models.CharField(max_length=9999, null=True, blank=True, help_text="wikipedia summary")
+    wiki = models.CharField(
+        max_length=9999, null=True, blank=True, help_text="wikipedia summary"
+    )
 
     def __str__(self):
         return self.name
@@ -37,16 +39,19 @@ class Abbr(TimeStampedModel):
         return days
 
 
-# @receiver(post_save, sender=Abbr)
+@receiver(post_save, sender=Abbr)
 def abbr_post_save(sender, instance, created, **kwargs):
+    print("abbr_post_save")
+
     if not created:
         return
-    # print('===============================================\n')
-    # print(f'post_save: {instance.name}')
-    # print('\n===============================================')
 
     if instance.wiki is not None:
         return
+
+    print("===============================================\n")
+    print(f"post_save: {instance.name}")
+    print("\n===============================================")
 
     # TODO change saving with rq_worker as it takes long to upload from file for the first time
     wiki = wiki_summary(instance.description)

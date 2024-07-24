@@ -3,12 +3,8 @@ Django==4.1
 django-debug-toolbar
 django-environ
 django-extensions
-<<<<<<< HEAD
-psycopg2
-=======
 django-rq
 psycopg2-binary
->>>>>>> parent of e3a6437 (remove unused: django-rq, wiki related)
 pytest
 pytest-django
 requests
