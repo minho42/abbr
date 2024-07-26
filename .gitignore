@@ -16,3 +16,4 @@ token.json
 .env
 venv/
 staticfiles/
+dump.rdb
