@@ -1,11 +1,7 @@
-black
 Django==4.1
 django-debug-toolbar
 django-environ
 django-extensions
 django-rq
-psycopg2-binary
-pytest
-pytest-django
 requests
 whitenoise
