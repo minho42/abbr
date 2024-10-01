@@ -66,7 +66,7 @@ def abbr_post_save(sender, instance, created, **kwargs):
         print("json downloaded")
         
         views.generate_json(None)
-        print("json generated")`
+        print("json generated")
         
     except Exception as e:
         print("error abbr_post_save: {str(e)}")
