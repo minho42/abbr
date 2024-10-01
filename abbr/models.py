@@ -7,6 +7,8 @@ from django.utils import timezone
 from core.utils import wiki_summary
 from abbrapp.models import TimeStampedModel
 
+from . import views
+
 
 class Abbr(TimeStampedModel):
     # name & description, should be unique case insensitive
@@ -51,9 +53,24 @@ def abbr_post_save(sender, instance, created, **kwargs):
 
     print("===============================================\n")
     print(f"post_save: {instance.name}")
-    print("\n===============================================")
 
-    # TODO change saving with rq_worker as it takes long to upload from file for the first time
-    wiki = wiki_summary(instance.description)
-    instance.wiki = wiki
-    instance.save()
+    # TODO: ?change saving with rq_worker as it takes long to upload from file for the first time
+    # better/simpler without background worker after the initial upload though
+    try:
+        wiki = wiki_summary(instance.description)
+        instance.wiki = wiki
+        instance.save()
+        print("wiki saved")
+        
+        views.download_json(None)
+        print("json downloaded")
+        
+        views.generate_json(None)
+        print("json generated")`
+        
+    except Exception as e:
+        print("error abbr_post_save: {str(e)}")
+        
+    print("\n===============================================")
+    
+    
