@@ -7,8 +7,6 @@ from django.utils import timezone
 from core.utils import wiki_summary
 from abbrapp.models import TimeStampedModel
 
-# from . import views
-
 
 class Abbr(TimeStampedModel):
     # name & description, should be unique case insensitive
@@ -43,7 +41,7 @@ class Abbr(TimeStampedModel):
 
 @receiver(post_save, sender=Abbr)
 def abbr_post_save(sender, instance, created, **kwargs):
-    print("abbr_post_save")
+    # print("abbr_post_save")
 
     if not created:
         return
@@ -61,13 +59,6 @@ def abbr_post_save(sender, instance, created, **kwargs):
         instance.wiki = wiki
         instance.save()
         print("wiki saved")
-        
-        # from . import views    
-        # views.download_json(None)
-        # print("json downloaded")
-        
-        # views.generate_json(None)
-        # print("json generated")
         
     except Exception as e:
         print(f"error abbr_post_save")
