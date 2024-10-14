@@ -42,13 +42,9 @@ class Abbr(TimeStampedModel):
 @receiver(post_save, sender=Abbr)
 def abbr_post_save(sender, instance, created, **kwargs):
     # print("abbr_post_save")
-
-    if not created:
-        return
-
-    if instance.wiki is not None:
-        return
-
+    update_wiki_summary(instance)
+        
+def update_wiki_summary(instance):
     print("===============================================\n")
     print(f"post_save: {instance.name}")
 
@@ -56,13 +52,19 @@ def abbr_post_save(sender, instance, created, **kwargs):
     # better/simpler without background worker after the initial upload though
     try:
         wiki = wiki_summary(instance.description)
+        
+        # prevent circular saving
+        post_save.disconnect(abbr_post_save, sender=Abbr)
+        
         instance.wiki = wiki
-        instance.save()
+        instance.save(update_fields=['wiki'])
         print("wiki saved")
         
     except Exception as e:
-        print(f"error abbr_post_save")
-        
-    print("\n===============================================")
+        print(f"error abbr_post_save: {e}")
     
+    finally:
+        post_save.connect(abbr_post_save, sender=Abbr)
+    
+    print("\n===============================================")
     
