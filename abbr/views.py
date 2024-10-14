@@ -164,7 +164,7 @@ def generate_json(request):
         data.append(row)
 
     with open(DATA_PATH, "w") as file:
-        file.write(json.dumps(data))
+        file.write(json.dumps(data, indent=2))
 
     messages.success(request, f"Json({len(data)}) generated to {DATA_PATH}")
 
