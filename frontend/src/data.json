@@ -120,6 +120,11 @@
     "description": "Screening for Delirium and Cognitive Impairment: 1.Alertness, 2.Abbreviated mental test-4 (AMT4), 3.Attention (months backwards test), 4.Acute change or fluctuating course"
   },
   {
+    "id": 5530,
+    "name": "4WW",
+    "description": "4-wheeled walker"
+  },
+  {
     "id": 266,
     "name": "5-ASA",
     "description": "5-aminosalicylic acid"
