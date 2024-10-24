@@ -155,6 +155,11 @@
     "description": "Accident and emergency"
   },
   {
+    "id": 5538,
+    "name": "A&O",
+    "description": "Alert and oriented"
+  },
+  {
     "id": 273,
     "name": "A&P",
     "description": "Auscultation and percussion"
@@ -1040,6 +1045,11 @@
     "description": "Abusive head trauma"
   },
   {
+    "id": 5539,
+    "name": "AHTR",
+    "description": "Acute hemolytic transfusion reaction"
+  },
+  {
     "id": 427,
     "name": "AI",
     "description": "Aortic incompetence"
@@ -1468,6 +1478,11 @@
     "id": 509,
     "name": "ANZSBT",
     "description": "Australian and New Zealand Society of Blood Transfusion"
+  },
+  {
+    "id": 5537,
+    "name": "AO",
+    "description": "Alert and oriented"
   },
   {
     "id": 510,
@@ -3463,6 +3478,11 @@
     "id": 880,
     "name": "C. Sp",
     "description": "Cervical spine"
+  },
+  {
+    "id": 5531,
+    "name": "C. auris",
+    "description": "Candida auris"
   },
   {
     "id": 881,
@@ -8620,6 +8640,11 @@
     "description": "Focal nodular hyperplasia"
   },
   {
+    "id": 5540,
+    "name": "FNHTR",
+    "description": "Febrile non-hemolytic transfusion reaction"
+  },
+  {
     "id": 1836,
     "name": "FOB",
     "description": "Faecal occult blood"
@@ -11520,6 +11545,11 @@
     "description": "Invasive pulmonary aspergillosis"
   },
   {
+    "id": 5534,
+    "name": "IPAC",
+    "description": "Infection Prevention and Control"
+  },
+  {
     "id": 2372,
     "name": "IPAP",
     "description": "Inspiratory positive airway pressure"
@@ -13735,6 +13765,16 @@
     "description": "Mass drug administration"
   },
   {
+    "id": 5535,
+    "name": "MDCT",
+    "description": "Multidetector computed tomography"
+  },
+  {
+    "id": 5536,
+    "name": "MDCTA",
+    "description": "Multidetector computed tomographic angiography"
+  },
+  {
     "id": 2780,
     "name": "MDD",
     "description": "Major depressive disorder"
@@ -14613,6 +14653,11 @@
     "id": 2937,
     "name": "Mon",
     "description": "Monitoring"
+  },
+  {
+    "id": 5533,
+    "name": "Mpox",
+    "description": "Monkeypox"
   },
   {
     "id": 2938,
@@ -24218,6 +24263,11 @@
     "id": 4742,
     "name": "WFI",
     "description": "Water for Injection"
+  },
+  {
+    "id": 5532,
+    "name": "WGS",
+    "description": "Whole genome sequencing"
   },
   {
     "id": 4743,
