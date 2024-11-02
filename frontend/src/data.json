@@ -375,6 +375,11 @@
     "description": "Albinism, black lock, cell migration disorder"
   },
   {
+    "id": 5542,
+    "name": "ABCDE",
+    "description": "Airway, Breathing, Circulation, Diaphragm, Extras"
+  },
+  {
     "id": 311,
     "name": "ABCDE",
     "description": "Airway, Breathing, Circulation, Disability, Exposure"
@@ -19255,6 +19260,11 @@
     "description": "Radiotherapy induced nausea and vomiting"
   },
   {
+    "id": 5541,
+    "name": "RIPE",
+    "description": "Rotation, Inspiration, Picture, Exposure"
+  },
+  {
     "id": 3804,
     "name": "RIPE",
     "description": "rifampin, isoniazid, pyrazinamide, and ethambutol"
@@ -20165,6 +20175,11 @@
     "description": "Simplified Acute Physiology Score"
   },
   {
+    "id": 5544,
+    "name": "SAQ",
+    "description": "Short Arc Quad"
+  },
+  {
     "id": 3978,
     "name": "SAR",
     "description": "Seasonal allergic rhinitis"
@@ -20802,7 +20817,7 @@
   {
     "id": 4098,
     "name": "SLR",
-    "description": "Straight leg raising"
+    "description": "Straight leg raise"
   },
   {
     "id": 5205,
@@ -21365,6 +21380,11 @@
     "description": "Soft tissue massage"
   },
   {
+    "id": 5543,
+    "name": "STM",
+    "description": "Soft tissue mobilization"
+  },
+  {
     "id": 4205,
     "name": "STNR",
     "description": "Symmetrical tonic neck reflex"
@@ -21373,6 +21393,11 @@
     "id": 4206,
     "name": "STS",
     "description": "Serological test for syphilis"
+  },
+  {
+    "id": 5545,
+    "name": "STS",
+    "description": "Sit-to-stand"
   },
   {
     "id": 4207,
