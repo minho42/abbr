@@ -9225,6 +9225,11 @@
     "description": "Gomez-Lopez-Hernandez syndrome"
   },
   {
+    "id": 5546,
+    "name": "GLS",
+    "description": "Global longitudinal strain"
+  },
+  {
     "id": 1941,
     "name": "GLT",
     "description": "Glucose loading test"
